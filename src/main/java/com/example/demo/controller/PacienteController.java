@@ -45,5 +45,16 @@ public class PacienteController {
 		return null;
 
 	}
+
+    @PostMapping
+	public Paciente postPaciente(@RequestBody Paciente paciente) {
+		
+		pacienteRepsitory.save(paciente);
+		
+		return paciente;
+		
+
+	}
+
     
 }
