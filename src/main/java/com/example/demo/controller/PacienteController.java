@@ -56,5 +56,31 @@ public class PacienteController {
 
 	}
 
+    @PutMapping("/{id}")
+    public Paciente putPacientebyId(@PathVariable Integer id, @RequestBody Paciente paciente){
+        
+        Optional<Paciente> pacienteCurrent = pacienteRepsitory.findById(id);
+
+        if(pacienteCurrent.isPresent()){
+
+            Paciente pacienteReturn = pacienteCurrent.get();
+
+            pacienteReturn.setDocumento(paciente.getDocumento());
+            pacienteReturn.setNombre(paciente.getNombre());
+            pacienteReturn.setApellido(paciente.getApellido());
+            paciente.setEmail(paciente.getEmail());
+            pacienteReturn.setGenero(paciente.getGenero());
+            paciente.setFechanacimeinto(paciente.getFechanacimeinto());
+            paciente.setTelefono(paciente.getTelefono());
+            paciente.setDireccion(paciente.getDireccion());
+            paciente.setPeso(paciente.isPeso());
+            paciente.setEstatura(paciente.isEstatura());
+
+        }
+
+        return null;
+
+    }
+
     
 }
